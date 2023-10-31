@@ -23,7 +23,7 @@ public class PassengerTypeRepositoryImpl implements PassengerTypeRepository {
 	PassengerTypeDao passengerTypeDao;
 
 	/**
-	 * 取得主檔
+	 * 取得主檔123
 	 */
 	@Override
 	public List<PassengerTypeDo> findPassengerTypes() {
