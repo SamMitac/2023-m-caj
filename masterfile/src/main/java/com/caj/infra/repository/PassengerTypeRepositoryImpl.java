@@ -11,6 +11,11 @@ import com.caj.domain.masterfile.PassengerTypeDo;
 import com.caj.domain.masterfile.PassengerTypeRepository;
 import com.caj.infra.repository.mapper.PassengerTypeDao;
 
+// 在最上面先 import package
+import java.util.Optional;
+import com.caj.infra.repository.po.PassengerTypePo;
+
+
 @Service
 public class PassengerTypeRepositoryImpl implements PassengerTypeRepository {
 
@@ -36,10 +41,20 @@ public class PassengerTypeRepositoryImpl implements PassengerTypeRepository {
 	/**
 	 * 取得折扣率
 	 */
+	/*
 	@Override
 	public BigDecimal findPassengerDiscount(String passengerType) {
 		return 	passengerTypeDao.findById(passengerType).get().getDiscount();
 	}
+	*/
+	@Override
+        public BigDecimal findPassengerDiscount(String passengerType) {
+         Optional<PassengerTypePo> result = passengerTypeDao.findById(passengerType);
+         if (result.isPresent()) {
+          return result.get().getDiscount();
+         };
+         return null;
+        }
 
 
 }
